@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package com.listaDeTareas.ListaDeTareas.repositorio;
+
+import com.listaDeTareas.ListaDeTareas.modelos.analisisGA;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
- * @author nicol
+ * @author nicolas lans
  */
-public interface analisisGARepositorio {
+public interface analisisGARepositorio extends JpaRepository<analisisGA, Long>{
     
 }

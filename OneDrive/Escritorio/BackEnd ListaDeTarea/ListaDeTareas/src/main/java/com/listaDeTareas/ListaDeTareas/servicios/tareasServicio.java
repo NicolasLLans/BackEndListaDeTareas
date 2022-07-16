@@ -21,16 +21,16 @@ public class tareasServicio {
         this.tareasRepo = tareasRepo;
     }
     
-    public tareas addTareas(tareas tarea){
-        return tareasRepo.save(tarea);
+    public tareas addTareas(tareas tareas){
+        return tareasRepo.save(tareas);
     }
     
     public List<tareas> buscarTareas(){
         return tareasRepo.findAll();
     }
     
-    public tareas editarTareas(tareas tarea){
-        return tareasRepo.save(tarea);
+    public tareas editarTareas(tareas tareas){
+        return tareasRepo.save(tareas);
     }
     
     public void borrarTareas(Long id){

@@ -1,4 +1,4 @@
-package com.listaDeTareas.ListaDeTareas.seguridad.modelos.enums;
+package com.listaDeTareas.ListaDeTareas.seguridad.enums;
 
 /**
  *

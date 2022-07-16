@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -16,20 +17,22 @@ public class tareas {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idTar;
     private String titulo;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaInc;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaLim;
-    private String desc;
+    private String descripcion;
     private String img;
 
     public tareas() {
     }
 
-    public tareas(Long idTar, String titulo, Date fechaInc, String desc, String img) {
+    public tareas(Long idTar, String titulo, Date fechaInc, Date fechaLim, String descripcion, String img) {
         this.idTar = idTar;
         this.titulo = titulo;
         this.fechaInc = fechaInc;
         this.fechaLim = fechaLim;
-        this.desc = desc;
+        this.descripcion = descripcion;
         this.img = img;
     }
 
@@ -65,12 +68,12 @@ public class tareas {
         this.fechaLim = fechaLim;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getImg() {
@@ -80,5 +83,5 @@ public class tareas {
     public void setImg(String img) {
         this.img = img;
     }
-    
-}
+
+}   

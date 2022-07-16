@@ -1,9 +1,7 @@
 package com.listaDeTareas.ListaDeTareas.controlador;
 
 import com.listaDeTareas.ListaDeTareas.modelos.tareas;
-import com.listaDeTareas.ListaDeTareas.modelos.usuario;
 import com.listaDeTareas.ListaDeTareas.servicios.tareasServicio;
-import com.listaDeTareas.ListaDeTareas.servicios.usuarioServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

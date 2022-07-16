@@ -1,6 +1,6 @@
 package com.listaDeTareas.ListaDeTareas.seguridad.modelos;
 
-import com.listaDeTareas.ListaDeTareas.seguridad.modelos.enums.RolNombre;
+import com.listaDeTareas.ListaDeTareas.seguridad.enums.RolNombre;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
