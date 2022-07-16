@@ -1,5 +1,6 @@
 package com.listaDeTareas.ListaDeTareas.servicios;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,4 +29,22 @@ public class usuarioServicio{
     public void save(usuario usuario){
         usuarioRepository.save(usuario);
     }
+    public List<usuario> verUsuario() {
+        return persoRepo.findAll();
+    }
+
+    @Override
+    public void crearUsuario(usuario user) {
+        usuarioRepository.save(user);
+    }
+
+    @Override
+    public void borrarUsuario(Long id) {
+        usuarioRepository.deleteById(id);    }
+
+    @Override
+    public usuario buscarUsuario(Long id) {
+        return usuarioRepository.findById(id).orElse(null);
+    }
+    
 }
