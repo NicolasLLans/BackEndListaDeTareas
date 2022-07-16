@@ -1,7 +1,12 @@
 package com.listaDeTareas.ListaDeTareas.servicios;
 
+import com.listaDeTareas.ListaDeTareas.modelos.usuario;
+import com.listaDeTareas.ListaDeTareas.repositorio.usuarioRepositorio;
 import java.util.List;
 import java.util.Optional;
+import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
@@ -11,8 +16,10 @@ import java.util.Optional;
 @Transactional
 public class usuarioServicio{
     
+    
     @Autowired
-    usuarioRepository usuarioRepository;
+    usuarioRepositorio usuarioRepository;
+    
     
     public Optional<usuario> getByNombreUsuario(String nombreUsuario){
         return usuarioRepository.findByNombreUsuario(nombreUsuario);
@@ -30,21 +37,18 @@ public class usuarioServicio{
         usuarioRepository.save(usuario);
     }
     public List<usuario> verUsuario() {
-        return persoRepo.findAll();
+        return usuarioRepository.findAll();
     }
 
-    @Override
     public void crearUsuario(usuario user) {
         usuarioRepository.save(user);
     }
 
-    @Override
     public void borrarUsuario(Long id) {
-        usuarioRepository.deleteById(id);    }
-
-    @Override
-    public usuario buscarUsuario(Long id) {
-        return usuarioRepository.findById(id).orElse(null);
+        usuarioRepository.deleteById(Integer.SIZE);
     }
-    
+
+    public Optional<usuario> buscarUsuario(Long id) {
+        return usuarioRepository.findById(Integer.SIZE);
+    }
 }

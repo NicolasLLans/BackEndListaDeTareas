@@ -1,8 +1,20 @@
 package com.listaDeTareas.ListaDeTareas.modelos;
 
+import com.listaDeTareas.ListaDeTareas.seguridad.modelos.Rol;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,7 +46,7 @@ public class usuario {
     inverseJoinColumns = @JoinColumn(name = "rol_id"))
     private Set<Rol> roles = new HashSet<>();
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "idTar")
     public List<tareas> tareasList;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "idCWeb")
@@ -45,7 +57,7 @@ public class usuario {
     
     
 
-    public Usuario() {
+    public usuario() {
     }
 
 
