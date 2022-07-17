@@ -45,10 +45,10 @@ public class usuarioServicio{
     }
 
     public void borrarUsuario(Long id) {
-        usuarioRepository.deleteById(Integer.SIZE);
+        usuarioRepository.deleteById(id);
     }
 
     public Optional<usuario> buscarUsuario(Long id) {
-        return usuarioRepository.findById(Integer.SIZE);
+        return usuarioRepository.findById(id);
     }
 }

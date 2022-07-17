@@ -25,10 +25,9 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 public class usuario {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @NotNull
     private String nombre;
     private String fotoDePerfil;
@@ -87,11 +86,11 @@ public class usuario {
         this.fotoDePerfil = fotoDePerfil;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
