@@ -7,11 +7,11 @@ body {
       color: hsl(212, 21%, 14%);
       font-family: 'Montserrat';
       font-weight: 700;
+      
 }
 
 .card {
       width: 50%;
-      margin: 5em auto;
       background-color: #fdfdff;
       border-radius: 0.5em;
       box-shadow: 2px 3px 7px 2px rgb(0 0 0 / 2%);
@@ -19,54 +19,104 @@ body {
       overflow: visible;
 }
 
-@media (max-width: 700px) {
+#img-pc{
+      display: block;
+}
+#img-mobile{
+      display: none;
+}
+
+@media (max-width: 1000px) {
       .card {
-            margin: 0 auto;
+            margin: 2% 2%;
+            flex-wrap: wrap;
             width: auto;
+      }
+      #img-mobile{
+            display: block;
+            border-radius: 0.5em 0.5em 0 0;
+      }
+      #img-pc{
+            display: none;
+      }
+      .titulo-h1{
+            font-size: 2em;
+      }
+      .descripcion{
+            font-size: 16px;
       }
 }
 
-.col{
+.col {
       display: flex;
-      width: 50%;
+      width: 100%;
       overflow: visible;
       flex-direction: column;
+      float: left;
 }
 
 img {
       width: 100%;
       height: 100%;
       border-radius: 0.5em 0 0 0.5em;
-      
+
 }
 
-button{
+button {
       width: 100%;
-      height: 3rem;
-      padding: 1rem auto;
-      font-size: 1em;
+      height: 4rem;
+      font-size: 1.2em;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       color: #fdfdff;
-      background-color: hsl(158, 36%, 37%) ;
+      background-color: hsl(158, 36%, 37%);
       border: none;
       border-radius: 10px;
-      margin: 1.5em 0 0 0;
+      margin: 1em 0 1em 0;
+      cursor: pointer;
 }
 
-#col2{
+button:hover {
+      background-color: hsl(158, 40%, 26%);
+      color: #ffffff;
+}
+
+#col2 {
       padding: 1.5rem 2rem;
 }
 
-span{
+span {
       font-size: 45px;
-      color: hsl(158, 36%, 37%) ;
+      color: hsl(158, 36%, 37%);
       font-family: 'Fraunces', sans-serif;
       font-weight: 700;
 }
-h1{
+
+h1 {
       font-family: 'Fraunces', sans-serif;
-      font-size: 45px;
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 1;
+}
+h3{
       font-weight: 500;
-      font-kerning:auto;
+      font-stretch:extra-expanded;
+}
+
+.icon-cart {
+      background-image: url('images/icon-cart.svg');
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      background-size: contain;
+      background-repeat: no-repeat;
+      vertical-align: middle;
+      margin-right: 2.5px;
+}
+
+p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      line-height: 1.5;
+      font-size: 18px;
 }
