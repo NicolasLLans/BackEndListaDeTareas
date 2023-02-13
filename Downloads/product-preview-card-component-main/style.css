@@ -18,8 +18,6 @@ body {
       display: flex;
       flex-direction: row;
       overflow: visible;
-      max-height: 80%;
-      overflow: visible;
 }
 
 #img-pc{
