@@ -17,7 +17,5 @@ export class ButtomComponent implements OnInit {
 
   onClick(){
     this.btnClick.emit();
-    console.log("click")
-
   }
 }
