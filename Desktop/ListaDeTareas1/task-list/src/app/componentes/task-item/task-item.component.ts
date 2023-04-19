@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { TASK } from 'src/app/mock-task';
 import { Task } from 'src/app/Task';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 @Component({
   selector: 'app-task-item',

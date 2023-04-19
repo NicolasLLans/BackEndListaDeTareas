@@ -18,7 +18,7 @@ import { TaskItemComponent } from './componentes/task-item/task-item.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
