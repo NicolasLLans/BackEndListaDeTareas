@@ -1,0 +1,29 @@
+.Inicio{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#Nombre {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2{
+    font-size: x-large;
+}
+
+.card-header{
+    position: relative;
+    width: 100%;
+}
+.card-header img{
+    position: absolute; /* Asegura que la imagen tenga posición absoluta */
+  width: 100%; /* Establece el ancho de la imagen al 100% del div padre */
+  height: 100%; /* Establece la altura de la imagen para que se ajuste proporcionalmente al ancho */
+  top: 0; /* Coloca la imagen en la parte superior del div */
+  left: 0; /* Coloca la imagen en la parte izquierda del div */
+}

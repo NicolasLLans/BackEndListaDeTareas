@@ -1,0 +1,4 @@
+.cuerpo{
+    display: flex;
+    flex-wrap: wrap;
+}

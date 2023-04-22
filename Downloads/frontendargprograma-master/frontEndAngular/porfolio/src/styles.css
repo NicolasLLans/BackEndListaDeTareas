@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+img{
+    width: 50px;
+}
+
+body.container{
+    display: flex;
+    margin-top: 0;
+    justify-content: center;
+}
+
+.Ventana{
+         
+    height: 300px;
+    width: 100%;
+    padding: 5% 20%;
+}
+
+#portada {
+    width: 100%;
+    height: 40%;
+}
+.Inicio button img{
+    width: 30px;
+}
+
+.card img.Portada{
+width: 100%;
+height: 300px;
+}
+
+#Nombre {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card-header{
+    background-image: url("https://img.freepik.com/vector-gratis/programador-trabajando-codigo-desarrollo-web-ingeniero-programacion-script-python-php-java-computadora_90220-249.jpg?w=2000");
+    background-repeat: no-repeat;
+    height: 200px;
+    width: 100%;
+    background-position: center;
+    background-size: contain ;
+    background-color: rgb(255, 255, 255);
+    padding: 7rem;
+}
+
+
+li{
+    list-style-type: none;
+    padding: 0.5rem;
+}
+
+
+@media (max-width: 1200px){
+    .Ventana{
+        margin-top: 5rem;
+        padding: 5% 5%;
+        font-size: 14px;
+    }
+ 
+} 
+
+body{
+    background-image: url(https://img.freepik.com/vector-gratis/fondo-formas-geometricas-planas_23-2148376161.jpg?w=2000);
+    /*https://wallpapercave.com/wp/wp2037124.png*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    
+    
+    padding: 0;
+    height: 100vh;
+    
+}
+
+#Inicio{
+    box-shadow: 10px 1px 30px black;
+    border: solid 3px rgb(39, 39, 39);
+    margin-bottom: 4.5rem!important;
+}
+.card-body{
+    padding: 2rem;
+}
+
+a i{
+    font-size: 2rem;
+}
+h2 a i{
+    font-size: 1rem;
+}
+
+
+#col-btn{
+    display: flex;
+    justify-content: right;
+}
+
+#col-titulo{
+    display: flex;
+    justify-content: start;
+}
+
+#btn-edicion{
+    font-size: 1rem;
+    padding: 2px
+}

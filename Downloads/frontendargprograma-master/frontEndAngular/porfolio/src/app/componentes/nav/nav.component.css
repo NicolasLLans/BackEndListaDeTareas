@@ -1,0 +1,42 @@
+#fondo{
+    background-color: rgba(29, 29, 29, 0.979);
+}
+#offcanvasDarkNavbar{
+    background-color: rgba(29, 29, 29, 0.979);
+}
+#offcanvasDarkNavbarLabel{
+    color: aliceblue;
+}
+a span{
+    font-size: 14px;
+}
+i{
+    color: aliceblue;
+}
+.login{
+    background-color: rgb(71, 132, 245);
+}
+button i{
+    background-color: none;
+}
+#iniciar{
+    display: block;
+}
+.botonM{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2%;
+}
+
+.perfil{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+.cajaDeFoto{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(18, 18, 22);
+}

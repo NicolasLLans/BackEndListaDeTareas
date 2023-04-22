@@ -1,0 +1,106 @@
+<div class="card" style="width: 100%; height: max-content;" id="Inicio">
+  <div class="card-body" id="proy">
+    <!--ENCABEZADO DE TARJETA PROYECTO-->
+    <div class="row justify-content-end">
+      <div class="col-4" id="col-titulo">
+        <h2 class="card-title text-center" id="Nombre">
+          Proyectos
+        </h2>
+      </div>
+      <div class="col-4" id="col-btn">
+        <!--boton de lapiz-->
+        <a type="" class=""  *ngIf="generalService.vistabtn" >
+          <i class="bi bi-pencil lapiz" id="btn-edicion" data-bs-toggle="modal" data-bs-target="#editarpro"></i>
+          <i class="bi bi-trash2" id="btn-edicion" data-bs-toggle="modal" data-bs-target="#eliminarpro"></i>
+          <i class="bi bi-plus" id="btn-edicion" data-bs-toggle="modal" data-bs-target="#agregarpro"></i>
+        </a>
+      </div>
+    </div>
+    <!--CUERPO DE LA TARJETA PROYECTO-->
+    <div class="container text-center">
+      <div class="row row-cols-2">
+        <div class="col"  *ngFor="let proyectos of proyectoList" >
+          <li>
+            <h3>{{proyectos.titulo}}</h3>
+            <img [src]="proyectos.img" alt="">
+            <p>{{proyectos.descripcion}}</p>
+            <button class="btn-bd-primary">Ver más</button>
+          </li>
+        </div>
+      </div>
+    </div>
+    <!--BOTON PARA PROXIMA TARJETA-->
+    <a routerLink="/encabezado" class="btn btn-sm d-flex justify-content-center">
+      <i class="bi bi-chevron-compact-up"></i>
+    </a>
+  </div>
+</div>
+
+<!--Modal de edicion-->
+<div class="modal fade" id="editarpro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Proyectos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="text">descripción</label>
+        <input type="text" placeholder="escribir texto aquí">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal para eliminar-->
+<div class="modal fade" id="eliminarpro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>ID</option>
+            <option value="1">Uno</option>
+            <option value="2">Dos</option>
+            <option value="3">Tres</option>
+            <option value="4">Cuatro</option>
+          </select>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal de agregar nueva edición-->
+<div class="modal fade" id="agregarpro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar Proyectos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="text">descripción</label>
+        <input type="text" placeholder="escribir texto aquí">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="card" style="width: 100%; height: max-content;" id="Inicio">
+  <div class="card-header">
+    <img [src]="miPorfolio.fotoBanner" alt="">
+  </div>
+  <div class="card-body">
+    <h1 class="card-title text-center" id="Nombre"> {{miPorfolio.nombre}} {{miPorfolio.apellido}} </h1>
+    <h3 class="card-title text-center">{{miPorfolio.titulo}}</h3>
+    <p class="card-title text-center">{{miPorfolio.localidad}}</p>
+    <ul class="card-text m-3">
+      <li>
+        <h2>Acerca de
+          <!--boton de lapiz-->
+          <a type="" *ngIf="generalService.vistabtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-pencil"></i>
+          </a>
+        </h2>
+        <p>{{miPorfolio.descripcion}}</p>
+      </li>
+    </ul>
+    <!--boton flecha-->
+    <a routerLink="/educacion" class="btn btn-sm d-flex justify-content-center">
+      <i class="bi bi-chevron-compact-down"></i>
+    </a>
+  </div>
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Perfil</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formulario" (submit)="editarPerfil()">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">ID</label>
+            <input type="text" class="form-control" [(ngModel)]="miPorfolio.id" formControlName="id" id="exampleFormControlInput1"
+              placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="miPorfolio.nombre" formControlName="nombre" id="exampleFormControlInput1"
+              placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Apellido</label>
+            <input type="text" class="form-control" [(ngModel)]="miPorfolio.apellido" formControlName="apellido" id="exampleFormControlInput1"
+              placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Título</label>
+            <input type="text" class="form-control" [(ngModel)]="miPorfolio.titulo" formControlName="titulo" id="exampleFormControlInput1"
+              placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Localidad</label>
+            <input type="text" class="form-control" [(ngModel)]="miPorfolio.localidad" formControlName="localidad" id="exampleFormControlInput1"
+              placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Foto de Perfil</label>
+            <input type="text" class="form-control" [(ngModel)]="miPorfolio.fotoPerfil" formControlName="fotoPerfil" id="exampleFormControlInput1"
+              placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Foto de Portada</label>
+            <input type="text" class="form-control" [(ngModel)]="miPorfolio.fotoBanner" formControlName="fotoBanner" id="exampleFormControlInput1"
+              placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+            <textarea class="form-control" [(ngModel)]="miPorfolio.descripcion" formControlName="descripcion" id="exampleFormControlTextarea1"
+              rows="3">{{miPorfolio.descripcion}}</textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Guardar cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
