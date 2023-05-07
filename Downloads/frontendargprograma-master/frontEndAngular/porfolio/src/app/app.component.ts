@@ -14,8 +14,9 @@ export class AppComponent {
   misProy:any;
   misSkills:any;
   misExp:any;
+  
 
-  constructor(private generalService: GeneralService, private dataService: DataService){}
+  constructor(public generalService: GeneralService, private dataService: DataService){}
 
   ngOnInit(){
     this.cargarDatosDelPorfolio();

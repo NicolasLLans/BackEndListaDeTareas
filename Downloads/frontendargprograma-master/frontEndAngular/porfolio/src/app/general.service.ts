@@ -7,8 +7,9 @@ import { Personas } from './modelos/personas';
   providedIn: 'root'
 })
 export class GeneralService {
- public cargando:boolean = true;
  public vistabtn: boolean = false;
+ public iniciar:boolean = false;
+ public btnLog:boolean=true;
 
   constructor(private http:HttpClient) { }
 

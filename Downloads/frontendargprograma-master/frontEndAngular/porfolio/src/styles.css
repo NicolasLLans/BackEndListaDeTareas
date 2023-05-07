@@ -1,108 +1,301 @@
-/* You can add global styles to this file, and also import other style files */
-img{
-    width: 50px;
+:root {
+	--color-primario: #0077B5;
+	--color-secundario: #4A4A4A;
+	--color-fondo: #E9EBEE;
+	--color-contraste: #FFFFFF;
 }
 
-body.container{
-    display: flex;
-    margin-top: 0;
-    justify-content: center;
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	width: 100%;
 }
 
-.Ventana{
-         
-    height: 300px;
-    width: 100%;
-    padding: 5% 20%;
+body {
+	background: #333;
+	color: #d6cdc7;
+	background-color: rgba(0, 0, 0, 1);
+	background-image: linear-gradient(329deg, rgba(0, 0, 0, 1) 6%, rgba(61, 74, 57, 1) 20%, rgba(67, 75, 107, 1) 40%, rgba(23, 54, 72, 1) 60%, rgba(3, 11, 16, 1) 80%, rgba(0, 0, 0, 1) 100%);
+	/* font-family: 'Roboto', sans-serif; */
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 }
 
-#portada {
-    width: 100%;
-    height: 40%;
-}
-.Inicio button img{
-    width: 30px;
+h2 {
+	font-size: calc(0.8rem + .9vw);
 }
 
-.card img.Portada{
-width: 100%;
-height: 300px;
+h1 {
+	font-size: calc(1rem + .9vw);
 }
 
-#Nombre {
-    font-size: 2rem;
-    font-weight: 700;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+h3 {
+	font-size: calc(0.5rem + .9vw);
 }
 
-.card-header{
-    background-image: url("https://img.freepik.com/vector-gratis/programador-trabajando-codigo-desarrollo-web-ingeniero-programacion-script-python-php-java-computadora_90220-249.jpg?w=2000");
-    background-repeat: no-repeat;
-    height: 200px;
-    width: 100%;
-    background-position: center;
-    background-size: contain ;
-    background-color: rgb(255, 255, 255);
-    padding: 7rem;
+p {
+	margin: 0;
 }
 
 
-li{
-    list-style-type: none;
-    padding: 0.5rem;
+#col-btn {
+	text-align: end;
+}
+
+.card {
+	background-color: #33333300;
+}
+
+.modal {
+	background-color: #1b202d;
+}
+
+i {
+	font-size: 16px;
+	padding: 0 8px;
+}
+
+.barra-nav {
+	width: 100%;
+	min-height: 57px;
+	/* border-radius: 10px; */
+	background-color: #0a13311c;
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	padding: 25px;
+	border-bottom: 1px solid #f5f5dc4d;
 }
 
 
-@media (max-width: 1200px){
-    .Ventana{
-        margin-top: 5rem;
-        padding: 5% 5%;
-        font-size: 14px;
-    }
- 
-} 
 
-body{
-    background-image: url(https://img.freepik.com/vector-gratis/fondo-formas-geometricas-planas_23-2148376161.jpg?w=2000);
-    /*https://wallpapercave.com/wp/wp2037124.png*/
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    
-    
-    padding: 0;
-    height: 100vh;
-    
-}
+.contenedor {
+	width: 95%;
+	max-width: 1200px;
+	margin: auto;
+	padding: 15px 0;
+	text-align: start;
+	height: 580px;
 
-#Inicio{
-    box-shadow: 10px 1px 30px black;
-    border: solid 3px rgb(39, 39, 39);
-    margin-bottom: 4.5rem!important;
-}
-.card-body{
-    padding: 2rem;
-}
-
-a i{
-    font-size: 2rem;
-}
-h2 a i{
-    font-size: 1rem;
+	/* Grid */
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	gap: 15px;
 }
 
 
-#col-btn{
-    display: flex;
-    justify-content: right;
+.titulo {
+	font-size: 24px;
+	padding: 20px 0;
 }
 
-#col-titulo{
-    display: flex;
-    justify-content: start;
+
+.modal-content {
+	background-color: #03151a;
 }
 
-#btn-edicion{
-    font-size: 1rem;
-    padding: 2px
+
+
+
+.card {
+	display: flex;
+	width: 100%;
+	gap: 20px;
+	flex-direction: column;
+	/* justify-content: space-between;*/
+	border-radius: 10px;
+	min-height: 200px;
+	font-weight: bold;
+	position: relative;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+	/* width: calc(33.33% - 20px);
+
+	/* Flexbox */
+	/* width: calc(33.33% - 20px); */
+}
+
+.card .textos {
+	height: 100%;
+	/* Flebox */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.card-cabeza {
+	grid-template-columns: 1fr 1fr;
+	display: grid;
+	height: 90px;
+	gap: 15px;
+	padding: 15px
+}
+
+.lista-skills {
+	list-style: none;
+	display: flex;
+	gap: 20px;
+	padding: 0 15px;
+	flex-direction: column;
+}
+
+.items-card {
+	min-height: 95px;
+	display: grid;
+	grid-template-columns: 1fr 83%;
+	gap: 10px;
+	padding: 5px 15px;
+	background-color: #0412224a;
+	border-radius: 5px;
+}
+
+
+
+.img-list {
+	width: 50px;
+	height: 50px;
+	border-radius: 5px;
+	background-color: aliceblue;
+}
+
+.contenedor-encabezado {
+	/*background-image: url(./img/banner.jpg); */
+	/* border: solid 1px; */
+	display: flex;
+	justify-content: center;
+	border-radius: 10px;
+	border: solid 1px;
+	text-align: center;
+	/* padding: 20px; */
+	background-size: cover;
+	background-position: center center;
+	/* width: 30%; */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.contenedor-encabezado ul {
+	list-style: none;
+}
+
+.contenedor-encabezado ul li {
+	font-weight: bold;
+}
+
+.contenedor-encabezado .boton {
+	background: #0b9488;
+	display: block;
+	width: 100%;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	padding: 10px;
+	border: none;
+	border-radius: 100px;
+	font-family: 'Roboto', sans-serif;
+	cursor: pointer;
+}
+
+.educacion {
+	width: 95%;
+	margin: auto;
+	max-width: 1200px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 15px;
+}
+
+@media screen and (max-width: 900px) {
+	.contenedor {
+		grid-template-columns: 1fr;
+		height: auto;
+	}
+
+	.contenedor-proyectos {
+		height: 89vh;
+	}
+
+	.educacion {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media screen and (max-width: 700px) {}
+
+@media screen and (max-width: 600px) {}
+
+
+.card-header {
+	display: flex;
+	align-content: space-between;
+	align-items: center;
+	min-height: 150px;
+	width: 100%;
+	display: flex;
+	border-radius: 50%;
+	justify-content: center;
+	position: relative;
+	/*width: inherit;*/
+}
+
+.card-header img {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	top: 0;
+	left: 0;
+	border-radius: 50%;
+	/* overflow: auto;*/
+}
+
+.card-body {
+	display: flex;
+	gap: 25px;
+	flex-direction: column;
+	text-align: start;
+}
+
+.btn {
+	min-width: 100px;
+	min-height: 40px;
+	font-size: 16px;
+	background-color: #2aa572;
+	font-weight: 700;
+	font-style: normal;
+	color: #f7f7f7;
+	border-radius: 8px;
+}
+
+.titulo-proyectos {
+	font-size: 24px;
+	display: flex;
+	padding: 20px 0;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal {
+	background-color: #1b202d24;
+}
+
+.content-img {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.card-cuerpo {
+	font-size: smaller;
+	display: flex;
+	flex-direction: column;
+	padding: 10px 0px 10px 10px;
+	width: 100%;
 }

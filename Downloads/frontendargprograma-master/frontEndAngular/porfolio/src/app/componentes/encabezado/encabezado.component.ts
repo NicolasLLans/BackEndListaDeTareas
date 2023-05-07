@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
 import { GeneralService } from 'src/app/general.service';
 import { Personas } from 'src/app/modelos/personas';
@@ -14,40 +14,58 @@ import { PersonasService } from 'src/app/servicios/personas.service';
   styleUrls: ['./encabezado.component.css']
 })
 export class EncabezadoComponent {
+  //atributos
   miPorfolio:any;
   public formulario!: FormGroup;
 
-  constructor(public generalService: GeneralService,private dataService: DataService, public personasService:PersonasService, private formBuilder:FormBuilder){
-    this.formulario = this.formBuilder.group({
-      id: [],
-      nombre: ['', [Validators.required]],
-      apellido: ['', [Validators.required]],
-      titulo: ['', [Validators.required]],
-      localidad: ['', [Validators.required]],
-      descripcion: ['', [Validators.required]],
-      fotoPerfil: ['', [Validators.required]],
-      fotoBanner: ['', [Validators.required]]
-
-    });
+  //constructor
+  constructor(public generalService: GeneralService,private dataService: DataService, public personasService:PersonasService, public formBuilder:FormBuilder){
   }
 
-ngOnInit(): void{
+  //metodos o funciones
+  ngOnInit(): void{
   this.dataService.miPorfolio$.subscribe(data => {
     this.miPorfolio = data;
+    this.formulario.setValue({
+      id: this.miPorfolio?.id,
+      nombre: this.miPorfolio?.nombre,
+      apellido: this.miPorfolio?.apellido,
+      titulo: this.miPorfolio?.titulo,
+      localidad: this.miPorfolio?.localidad,
+      fotoPerfil: this.miPorfolio?.fotoPerfil,
+      fotoBanner: this.miPorfolio?.fotoBanner,
+      descripcion: this.miPorfolio?.descripcion
+    });
   });
-}
+
+ 
+  this.formulario = this.formBuilder.group({
+    id: new FormControl('',Validators.required),
+    nombre: new FormControl(''),
+    apellido: new FormControl(''),
+    titulo: new FormControl(''),
+    localidad: new FormControl(''),
+    descripcion: new FormControl(''),
+    fotoPerfil: new FormControl(''),
+    fotoBanner: new FormControl('')
+  });
+
+  
+
+  }
 
 
-editarPerfil() {
-  this.personasService.editarPersona(this.miPorfolio.id, this.formulario.value).subscribe(
-    (response: Personas) => {
-      console.log(response);
-      this.miPorfolio = this.formulario.value;// Actualizar los datos locales con los datos del formulario
-    },
-    (error: HttpErrorResponse) => {
-      alert(error.message);
-    }
-  );
-}
+  editarPerfil() {
+      this.personasService.editarPersona(this.miPorfolio.id, this.formulario.value).subscribe(
+        (response: Personas) => {
+          console.log(response);
+          this.miPorfolio = this.formulario.value; // Actualizar los datos locales con los datos del formulario
+          //this.datosActualizados.next(); // Emitir el Subject para actualizar los datos
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );   
+  }
 
 }

@@ -1,12 +1,13 @@
-<div class="card" style="width: 100%; height: max-content;" id="Inicio">
-  <div class="card-header">
-    <img [src]="miPorfolio.fotoBanner" alt="">
-  </div>
-  <div class="card-body">
-    <h1 class="card-title text-center" id="Nombre"> {{miPorfolio.nombre}} {{miPorfolio.apellido}} </h1>
-    <h3 class="card-title text-center">{{miPorfolio.titulo}}</h3>
-    <p class="card-title text-center">{{miPorfolio.localidad}}</p>
-    <ul class="card-text m-3">
+<div class="card-header" id="encabezado" [style.background-image]="'url(' + miPorfolio?.fotoBanner + ')'" style="background-position: center center;background-size: cover;
+background-color: rgb(203, 204, 204); display: flex;
+    justify-content: flex-start;">
+    <img [src]="miPorfolio?.fotoPerfil" alt="" style="margin-bottom: -140px; background-color: rgb(122, 123, 124);">
+</div>
+<div class="card-body">
+    <h1> {{miPorfolio?.nombre}} {{miPorfolio?.apellido}} </h1>
+    <h3>{{miPorfolio?.titulo}}</h3>
+    <p>{{miPorfolio?.localidad}}</p>
+    <ul >
       <li>
         <h2>Acerca de
           <!--boton de lapiz-->
@@ -14,14 +15,9 @@
             <i class="bi bi-pencil"></i>
           </a>
         </h2>
-        <p>{{miPorfolio.descripcion}}</p>
+        <p>{{miPorfolio?.descripcion}}</p>
       </li>
     </ul>
-    <!--boton flecha-->
-    <a routerLink="/educacion" class="btn btn-sm d-flex justify-content-center">
-      <i class="bi bi-chevron-compact-down"></i>
-    </a>
-  </div>
 </div>
 
 <!--Modal-->
@@ -36,44 +32,37 @@
       <div class="modal-body">
         <form [formGroup]="formulario" (submit)="editarPerfil()">
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">ID</label>
-            <input type="text" class="form-control" [(ngModel)]="miPorfolio.id" formControlName="id" id="exampleFormControlInput1"
-              placeholder="">
+            <label for="idporfolio" class="form-label">ID</label>
+            <input type="text" class="form-control" formControlName="id" id="idporfolio">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-            <input type="text" class="form-control" [(ngModel)]="miPorfolio.nombre" formControlName="nombre" id="exampleFormControlInput1"
-              placeholder="">
+            <label for="nombrePorfolio" class="form-label">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre" id="nombrePorfolio">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Apellido</label>
-            <input type="text" class="form-control" [(ngModel)]="miPorfolio.apellido" formControlName="apellido" id="exampleFormControlInput1"
-              placeholder="">
+            <label for="ApellidoPerfil" class="form-label">Apellido</label>
+            <input type="text" class="form-control" formControlName="apellido" id="ApellidoPerfil">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Título</label>
-            <input type="text" class="form-control" [(ngModel)]="miPorfolio.titulo" formControlName="titulo" id="exampleFormControlInput1"
-              placeholder="">
+            <label for="tituloPorfolio" class="form-label">Título</label>
+            <input type="text" class="form-control"  formControlName="titulo" id="tituloPorfolio">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Localidad</label>
-            <input type="text" class="form-control" [(ngModel)]="miPorfolio.localidad" formControlName="localidad" id="exampleFormControlInput1"
-              placeholder="">
+            <label for="localidadPorfolio" class="form-label">Localidad</label>
+            <input type="text" class="form-control" formControlName="localidad" id="localidadPorfolio">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Foto de Perfil</label>
-            <input type="text" class="form-control" [(ngModel)]="miPorfolio.fotoPerfil" formControlName="fotoPerfil" id="exampleFormControlInput1"
-              placeholder="">
+            <label for="fotoPerfil" class="form-label">Foto de Perfil</label>
+            <input type="text" class="form-control"  formControlName="fotoPerfil" id="fotoPerfil">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Foto de Portada</label>
-            <input type="text" class="form-control" [(ngModel)]="miPorfolio.fotoBanner" formControlName="fotoBanner" id="exampleFormControlInput1"
-              placeholder="">
+            <label for="fotoBanner" class="form-label">Foto de Portada</label>
+            <input type="text" class="form-control" formControlName="fotoBanner" id="fotoBanner">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-            <textarea class="form-control" [(ngModel)]="miPorfolio.descripcion" formControlName="descripcion" id="exampleFormControlTextarea1"
-              rows="3">{{miPorfolio.descripcion}}</textarea>
+            <label for="exampleFormControlTextarea7" class="form-label">Descripción</label>
+            <textarea class="form-control" formControlName="descripcion" id="descripcion"
+              rows="3"></textarea>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

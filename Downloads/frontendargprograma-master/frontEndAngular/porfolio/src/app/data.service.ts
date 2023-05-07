@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { GeneralService } from './general.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,7 @@ export class DataService {
   private misExperienciasSource = new BehaviorSubject<any>(null);
   misExperiencias$ = this.misExperienciasSource.asObservable();
 
-  constructor() {}
+  constructor(private http:HttpClient, private generalService:GeneralService) {}
 
   setMiPorfolio(data: any) {
     this.miPorfolioSource.next(data);
@@ -40,5 +42,29 @@ export class DataService {
 
   setMisExperiencias(data: any) {
     this.misExperienciasSource.next(data);
+  }
+
+  actualizarMisEducaciones(){
+    this.generalService.obtenerInfoEdu().subscribe(data => {
+      this.misEducacionesSource.next(data);
+    });
+  }
+
+  actualizarMisExperiencias(){
+    this.generalService.obtenerInfoExp().subscribe(data => {
+      this.misExperienciasSource.next(data);
+    });
+  }
+
+  actualizarMisSkills(){
+    this.generalService.obtenerInfoSkills().subscribe(data => {
+      this.misSkillsSource.next(data);
+    });
+  }
+
+  actualizarMisProyectos(){
+    this.generalService.obtenerInfoProy().subscribe(data => {
+      this.misProyectosSource.next(data);
+    });
   }
 }

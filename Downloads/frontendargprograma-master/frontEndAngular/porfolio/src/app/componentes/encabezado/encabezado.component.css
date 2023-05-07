@@ -1,29 +1,36 @@
-.Inicio{
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+.card-header img{
+      position: relative;
+      width: 100px;
+      height: 100px;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      border: 1px solid;
 }
 
-#Nombre {
-    font-size: 2rem;
-    font-weight: 700;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.card-body{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: start;
+      padding: 50px 25px 25px 25px;
+}
+ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+}
+
+.modal-content{
+      text-align:start ;
 }
 
 h2{
-    font-size: x-large;
+      background-color: #a9b3c408;
+      padding: 10px 0;
+      border-radius: 3px;
 }
 
-.card-header{
-    position: relative;
-    width: 100%;
-}
-.card-header img{
-    position: absolute; /* Asegura que la imagen tenga posición absoluta */
-  width: 100%; /* Establece el ancho de la imagen al 100% del div padre */
-  height: 100%; /* Establece la altura de la imagen para que se ajuste proporcionalmente al ancho */
-  top: 0; /* Coloca la imagen en la parte superior del div */
-  left: 0; /* Coloca la imagen en la parte izquierda del div */
+p{
+      font-weight: 400;
 }

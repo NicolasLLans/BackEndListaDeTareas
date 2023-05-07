@@ -1,40 +1,36 @@
-<div class="card" style="width: 100%; height: max-content;" id="Inicio">
-  <div class="card-body" id="proy">
-    <!--ENCABEZADO DE TARJETA PROYECTO-->
-    <div class="row justify-content-end">
-      <div class="col-4" id="col-titulo">
-        <h2 class="card-title text-center" id="Nombre">
-          Proyectos
-        </h2>
-      </div>
-      <div class="col-4" id="col-btn">
-        <!--boton de lapiz-->
-        <a type="" class=""  *ngIf="generalService.vistabtn" >
-          <i class="bi bi-pencil lapiz" id="btn-edicion" data-bs-toggle="modal" data-bs-target="#editarpro"></i>
-          <i class="bi bi-trash2" id="btn-edicion" data-bs-toggle="modal" data-bs-target="#eliminarpro"></i>
-          <i class="bi bi-plus" id="btn-edicion" data-bs-toggle="modal" data-bs-target="#agregarpro"></i>
-        </a>
-      </div>
-    </div>
-    <!--CUERPO DE LA TARJETA PROYECTO-->
-    <div class="container text-center">
-      <div class="row row-cols-2">
-        <div class="col"  *ngFor="let proyectos of proyectoList" >
-          <li>
-            <h3>{{proyectos.titulo}}</h3>
-            <img [src]="proyectos.img" alt="">
-            <p>{{proyectos.descripcion}}</p>
-            <button class="btn-bd-primary">Ver más</button>
-          </li>
-        </div>
-      </div>
-    </div>
-    <!--BOTON PARA PROXIMA TARJETA-->
-    <a routerLink="/encabezado" class="btn btn-sm d-flex justify-content-center">
-      <i class="bi bi-chevron-compact-up"></i>
+<!--ENCABEZADO DE TARJETA PROYECTO-->
+<div class="cabeza-tarjeta" id="proyectos">
+  <div class="" id="">
+    <h2 class="" id="">
+      Mis proyectos
+    </h2>
+  </div>
+  <div class="" id="col-btn">
+    <!--boton de lapiz-->
+    <a type="" class="contenedor-iconos" *ngIf="generalService.vistabtn">
+      <i class="bi bi-pencil lapiz" id="btn-edicion" data-bs-toggle="modal" data-bs-target="#editarpro"></i>
+      <i class="bi bi-trash2" id="btn-edicion" data-bs-toggle="modal" data-bs-target="#eliminarpro"></i>
+      <i class="bi bi-plus" id="btn-edicion" data-bs-toggle="modal" data-bs-target="#agregarpro"></i>
     </a>
   </div>
 </div>
+<div class="contenedor-proyectos">
+  <!--CUERPO DE LA TARJETA PROYECTO-->
+  <div class="caja-tarjeta" *ngFor="let proyectos of proyectoList" [style.background-image]="'url(' + proyectos.img + ')'">
+    <li class="tarjeta-de-proyecto" >
+      <h3>{{proyectos.titulo}}</h3>
+      <div class="tarjeta-pie">
+        <p class="descripcion-tarjeta">{{proyectos.descripcion}}</p>
+        <button type="button" class="boton-tarjeta"><a [href]="proyectos.link" target="_blank" rel="noreferrer noopener">Ver más</a></button>
+      </div>
+    </li>
+  </div>
+</div>
+
+
+
+
+
 
 <!--Modal de edicion-->
 <div class="modal fade" id="editarpro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -46,19 +42,50 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <label for="text">descripción</label>
-        <input type="text" placeholder="escribir texto aquí">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Guardar cambios</button>
+        <form [formGroup]="formulario" (submit)="editarProyectos()">
+          <label for="exampleFormControlInput1" class="form-label">ID</label>
+          <select class="form-control" formControlName="id" aria-label="Default select example">
+            <option *ngFor="let proyecto of proyectoList" [value]="proyecto.id">{{proyecto.titulo}}</option>
+          </select>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Icono</label>
+            <input type="text" class="form-control" formControlName="img" id="exampleFormControlInput1" placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Titulo</label>
+            <input type="text" class="form-control" formControlName="titulo" id="exampleFormControlInput1"
+              placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Enlace al proyecto</label>
+            <input type="text" class="form-control" formControlName="link" id="exampleFormControlInput1" placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Fecha de Inicio</label>
+            <input type="number" class="form-control" formControlName="fechaIni" id="exampleFormControlInput1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Fecha de finalizacion</label>
+            <input type="number" class="form-control" formControlName="fechaFin" id="exampleFormControlInput1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+            <textarea class="form-control" formControlName="descripcion" id="exampleFormControlTextarea1"
+              rows="3"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
 
 <!--Modal para eliminar-->
-<div class="modal fade" id="eliminarpro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="eliminarpro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -66,25 +93,22 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>ID</option>
-            <option value="1">Uno</option>
-            <option value="2">Dos</option>
-            <option value="3">Tres</option>
-            <option value="4">Cuatro</option>
+        <form [formGroup]="formulario" (submit)="eliminarProyectos()">
+          <label for="exampleFormControlInput1" class="form-label">ID</label>
+          <select class="form-control" formControlName="id" aria-label="Default select example">
+            <option *ngFor="let proyecto of proyectoList" [value]="proyecto.id">{{proyecto.titulo}}</option>
           </select>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Eliminar proyecto</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Guardar cambios</button>
       </div>
     </div>
   </div>
 </div>
 
-<!--Modal de agregar nueva edición-->
+<!--Modal de agregar nuevo proyecto-->
 <div class="modal fade" id="agregarpro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -94,12 +118,34 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <label for="text">descripción</label>
-        <input type="text" placeholder="escribir texto aquí">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Guardar cambios</button>
+        <form [formGroup]="formulario" (submit)="agregarProyectos()">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Icono</label>
+            <input type="text" class="form-control" formControlName="img" id="exampleFormControlInput1" placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Titulo</label>
+            <input type="text" class="form-control" formControlName="titulo" id="exampleFormControlInput1"
+              placeholder="">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Fecha de Inicio</label>
+            <input type="number" class="form-control" formControlName="fechaIni" id="exampleFormControlInput1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Fecha de finalizacion</label>
+            <input type="number" class="form-control" formControlName="fechaFin" id="exampleFormControlInput1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+            <textarea class="form-control" formControlName="descripcion" id="exampleFormControlTextarea1"
+              rows="3"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Agregar</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

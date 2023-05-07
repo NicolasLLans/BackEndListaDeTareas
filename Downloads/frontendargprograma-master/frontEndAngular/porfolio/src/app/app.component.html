@@ -1,6 +1,43 @@
-<div class="cuerpo">
-    <app-nav style="flex: basis 50;"></app-nav>
-    <div class="Ventana" style="flex: basis 50;">
-        <router-outlet></router-outlet>
+<nav class="barra-nav">
+    <app-nav style="display: flex; flex-direction: row;"></app-nav>
+</nav>
+<div class="contenedor">
+    <div class="contenedor-encabezado">
+        <div class="card" style="width: inherit;
+        height: 100%;
+        -webkit-box-shadow: inset -14px -14px 45px -14px rgba(84, 109, 107, 1);
+        -moz-box-shadow: inset -14px -14px 45px -14px rgba(84, 109, 107, 1);
+        box-shadow: inset -14px -14px 45px -14px rgba(84, 109, 107, 1);
+
+        border: none;">
+            <app-encabezado></app-encabezado>
+        </div>
+    </div>
+    <div class="card card-contenedor">
+        <app-proyectos class="" style="height:100vh;"></app-proyectos>
     </div>
 </div>
+<div class="espacio"></div>
+<div class="educacion">
+    <div class="card" style="border: solid 1px; background-color: #1b202d; height: fit-content;"><!--/* background-image: url(./img/1.jpg); */-->
+        <app-skills></app-skills>
+    </div>
+    <div class="card" style="border: solid 1px; background-color: #1b202d; height: fit-content;"><!--/* background-image: url(./img/4.jpg); */-->
+        <app-educacion></app-educacion>
+    </div>
+    <div class="card" style="border: solid 1px; background-color: #1b202d; height: fit-content;"><!--/* background-image: url(./img/5.jpg); */-->
+        <app-experiencia></app-experiencia>
+    </div>
+</div>
+<div class="espacio"></div>
+<footer class="barra-footer">
+    <div class="caja-1">
+        <h3 class="titulo-footer">Argentina Programa</h3>
+    </div>
+    <ul class="menu">
+        <li>inicio</li>
+        <li>contacto</li>
+        <li>login</li>
+
+    </ul>
+</footer>

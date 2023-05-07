@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
@@ -13,7 +14,8 @@ export class NavComponent implements OnInit {
   public rutaImagen="../../../assets/img/usuario.png";
   fotoPerfil:any;
 
-  constructor(private ruta : Router, public generalService: GeneralService, private dataService: DataService){
+
+  constructor(private ruta : Router, public generalService: GeneralService, private dataService: DataService,private location: Location){
     
   }
 
@@ -25,8 +27,9 @@ export class NavComponent implements OnInit {
 
   cerrarSesion(){
     this.generalService.vistabtn = false;
+    this.generalService.btnLog=true;
     (document.getElementById("iniciar") as HTMLElement).style.display = "block"; 
-    this.ruta.navigate(['/']);
+    this.location.back;
   }
 
 }

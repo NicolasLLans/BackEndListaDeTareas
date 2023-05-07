@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControlName, FormControl } from '@angular/forms';
 import { GeneralService } from 'src/app/general.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { DataService } from 'src/app/data.service';
+import { EducacionesService } from 'src/app/servicios/educaciones.service';
+import { Educacion } from 'src/app/modelos/educacion';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -10,38 +13,125 @@ import { DataService } from 'src/app/data.service';
   templateUrl: './educacion.component.html',
   styleUrls: ['./educacion.component.css']
 })
-export class EducacionComponent {
+export class EducacionComponent implements OnInit{
   public formulario!: FormGroup;
-  educacionList:any;
+  educacionList: any;
+  private educacionActualizada = new Subject<void>();
 
-  constructor(public generalService: GeneralService, private formBuilder: FormBuilder, private http: HttpClient,private dataService:DataService) {
+  constructor(public generalService: GeneralService, private formBuilder: FormBuilder, private educacionService: EducacionesService, private dataService: DataService) {}
+
+  ngOnInit(): void {
+
     this.formulario = this.formBuilder.group({
-      id: ['', [Validators.required]],
-      titulo: ['', [Validators.required]],
-      fechaDeInicio: ['', [Validators.required]],
-      fechaDeFinal: ['', [Validators.required]],
-      descripcion: ['', [Validators.required]],
-      imagen: ['', [Validators.required]]
+      id: ['', Validators.required],
+      img: ['', Validators.required],
+      titulo: ['', Validators.required],
+      fechaIni: ['', Validators.required],
+      fechaFin: ['', Validators.required],
+      descripcion: ['', Validators.required],
     });
-  }
-
-  ngOnInit(): void{
     this.dataService.misEducaciones$.subscribe(data => {
       this.educacionList = data;
     });
+
+    this.educacionActualizada.subscribe(() => {
+      this.dataService.actualizarMisEducaciones(); // Actualizar los datos en el servicio
+    });
+
+    // Obtener el id de la educación seleccionada y buscar los datos en el formulario
+    const idEducacionSeleccionada = Number(
+      (<HTMLSelectElement>document.getElementById('select-id')).value
+    );
+    const educacionSeleccionada = this.buscarEducacionPorId(
+      idEducacionSeleccionada
+    );
+    if (educacionSeleccionada) {
+      this.formulario.setValue({
+        id: educacionSeleccionada.id,
+        img: educacionSeleccionada.img,
+        titulo: educacionSeleccionada.titulo,
+        fechaIni: educacionSeleccionada.fechaIni,
+        fechaFin: educacionSeleccionada.fechaFin,
+        descripcion: educacionSeleccionada.descripcion,
+      });
+    }
+
   }
 
-  editarEducacion(){
-    console.log("editar EDU")
+  buscarEducacionPorId(id: number): Educacion {
+    return this.educacionList.find((educacion: Educacion) => educacion.id === id);
+  }
+  
+
+  mostrarDatos() {
+    const idEducacionSeleccionada = Number(
+      (<HTMLSelectElement>document.getElementById('select-id')).value
+    );
+    
+    const educacionSeleccionada = this.buscarEducacionPorId(
+      idEducacionSeleccionada
+    );
+    if (educacionSeleccionada) {
+      console.log(idEducacionSeleccionada)
+      this.formulario.setValue({
+        id: educacionSeleccionada.id,
+        img: educacionSeleccionada.img,
+        titulo: educacionSeleccionada.titulo,
+        fechaIni: educacionSeleccionada.fechaIni,
+        fechaFin: educacionSeleccionada.fechaFin,
+        descripcion: educacionSeleccionada.descripcion
+      });
+    }
   }
 
-  eliminarEducacion(){
-    console.log("editar EDU")
+  editarEducacion() {
+    const id = this.formulario.value.id;
+    const educacion = this.formulario.value;
+    this.educacionService.editarEducacion(id, educacion).subscribe(
+      (response: Educacion) => {
+        console.log(response);
+        this.educacionList = educacion;
+        this.educacionActualizada.next();
+        
+        this.formulario.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+  eliminarEducacion():void{
+  const educacionId = this.formulario.value.id;
+  console.log("eliminar EDU")
+  this.educacionService.eliminarEducacion(educacionId).subscribe(
+    () => {
+      this.educacionActualizada.next(); // Emitir el Subject para actualizar los datos
+
+      this.formulario.reset();
+    },
+    (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+  );
   }
 
   agregarEducacion(){
-    console.log("editar EDU")
+  const educacion = this.formulario.value;
+  console.log(educacion)
+  this.educacionService.crearEducacion(educacion).subscribe(
+    (response: Educacion) => {
+      console.log(response);
+      this.educacionList = educacion;
+      this.educacionActualizada.next(); // Emitir el Subject para actualizar los datos
+
+      this.formulario.reset();
+    },
+    (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+  );
   }
 
 }
-
