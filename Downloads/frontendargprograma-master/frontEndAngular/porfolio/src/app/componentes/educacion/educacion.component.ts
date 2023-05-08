@@ -40,7 +40,7 @@ export class EducacionComponent implements OnInit{
 
     // Obtener el id de la educación seleccionada y buscar los datos en el formulario
     const idEducacionSeleccionada = Number(
-      (<HTMLSelectElement>document.getElementById('select-id')).value
+      (<HTMLSelectElement>document.getElementById('select-idEdu')).value
     );
     const educacionSeleccionada = this.buscarEducacionPorId(
       idEducacionSeleccionada
@@ -65,14 +65,13 @@ export class EducacionComponent implements OnInit{
 
   mostrarDatos() {
     const idEducacionSeleccionada = Number(
-      (<HTMLSelectElement>document.getElementById('select-id')).value
+      (<HTMLSelectElement>document.getElementById('select-idEdu')).value
     );
     
     const educacionSeleccionada = this.buscarEducacionPorId(
       idEducacionSeleccionada
     );
     if (educacionSeleccionada) {
-      console.log(idEducacionSeleccionada)
       this.formulario.setValue({
         id: educacionSeleccionada.id,
         img: educacionSeleccionada.img,
