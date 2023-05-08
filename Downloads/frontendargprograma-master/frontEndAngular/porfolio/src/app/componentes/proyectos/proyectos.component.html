@@ -39,12 +39,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Proyectos</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="formulario.reset()"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="formulario" (submit)="editarProyectos()">
           <label for="exampleFormControlInput1" class="form-label">ID</label>
-          <select class="form-control" formControlName="id" aria-label="Default select example">
+          <select class="form-control" formControlName="id" id="select-idProy" (change)="mostrarDatos()"aria-label="Default select example">
             <option *ngFor="let proyecto of proyectoList" [value]="proyecto.id">{{proyecto.titulo}}</option>
           </select>
           <div class="mb-3">
@@ -74,7 +74,7 @@
               rows="3"></textarea>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"(click)="formulario.reset()">Cerrar</button>
             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar cambios</button>
           </div>
         </form>

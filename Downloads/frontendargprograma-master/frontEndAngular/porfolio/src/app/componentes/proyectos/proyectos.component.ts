@@ -15,9 +15,11 @@ import { ProyectosService } from 'src/app/servicios/proyectos.service';
 export class ProyectosComponent {
   proyectoList: any;
   private proyectoActualizada = new Subject<void>();
-  formulario: FormGroup;
+  formulario!: FormGroup;
 
-  constructor(public generalService: GeneralService, private dataService: DataService, private formBuilder: FormBuilder, private proyectosService: ProyectosService) {
+  constructor(public generalService: GeneralService, private dataService: DataService, private formBuilder: FormBuilder, private proyectosService: ProyectosService) {  }
+
+  ngOnInit(): void {
     this.formulario = this.formBuilder.group({
       id: ['', [Validators.required]],
       titulo: ['', [Validators.required]],
@@ -27,12 +29,7 @@ export class ProyectosComponent {
       img: ['', [Validators.required]],
       link: ['', [Validators.required]]
     });
-  }
 
-
-
-
-  ngOnInit(): void {
     this.dataService.misProyectos$.subscribe(data => {
       this.proyectoList = data;
     });
@@ -40,7 +37,53 @@ export class ProyectosComponent {
     this.proyectoActualizada.subscribe(() => {
       this.dataService.actualizarMisProyectos(); // Actualizar los datos en el servicio
     });
+
+    // Obtener el id de la educación seleccionada y buscar los datos en el formulario
+    const idProyectoSeleccionada = Number(
+      (<HTMLSelectElement>document.getElementById('select-idProy')).value
+    );
+    const proyectoSeleccionada = this.buscarProyectoPorId(
+      idProyectoSeleccionada
+    );
+    if (proyectoSeleccionada) {
+      this.formulario.setValue({
+        id: proyectoSeleccionada.id,
+        img: proyectoSeleccionada.img,
+        titulo: proyectoSeleccionada.titulo,
+        fechaIni: proyectoSeleccionada.fechaIni,
+        fechaFin: proyectoSeleccionada.fechaFin,
+        descripcion: proyectoSeleccionada.descripcion,
+        link:proyectoSeleccionada.link
+      });
+    }
   }
+
+  buscarProyectoPorId(id: number): Proyectos {
+    return this.proyectoList.find((proyecto: Proyectos) => proyecto.id === id);
+  }
+  
+
+  mostrarDatos() {
+    const idProyectoSeleccionada = Number(
+      (<HTMLSelectElement>document.getElementById('select-idProy')).value
+    );
+    
+    const proyectoSeleccionada = this.buscarProyectoPorId(
+      idProyectoSeleccionada
+    );
+    if (proyectoSeleccionada) {
+      this.formulario.setValue({
+        id: proyectoSeleccionada.id,
+        img: proyectoSeleccionada.img,
+        titulo: proyectoSeleccionada.titulo,
+        fechaIni: proyectoSeleccionada.fechaIni,
+        fechaFin: proyectoSeleccionada.fechaFin,
+        descripcion: proyectoSeleccionada.descripcion,
+        link: proyectoSeleccionada.link
+      });
+    }
+  }
+
   editarProyectos() {
     const id = this.formulario.value.id;
     const proyecto = this.formulario.value;

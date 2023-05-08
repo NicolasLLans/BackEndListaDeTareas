@@ -52,7 +52,7 @@ export class EducacionComponent implements OnInit{
         titulo: educacionSeleccionada.titulo,
         fechaIni: educacionSeleccionada.fechaIni,
         fechaFin: educacionSeleccionada.fechaFin,
-        descripcion: educacionSeleccionada.descripcion,
+        descripcion: educacionSeleccionada.descripcion
       });
     }
 
