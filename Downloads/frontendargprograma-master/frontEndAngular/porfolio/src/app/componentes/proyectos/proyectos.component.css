@@ -4,6 +4,10 @@ li {
       height: 100%;
 }
 
+h3{
+      max-width: 500px;
+}
+
 a {
       text-decoration: none;
       color: white;
@@ -17,7 +21,6 @@ a {
       display: flex;
       flex-direction: column;
       gap: 15px;
-
 }
 
 .contenedor-proyectos::-webkit-scrollbar {
@@ -26,14 +29,13 @@ a {
 
 .caja-tarjeta {
       border-radius: 5px;
-      border: 1px solid #b2b2b2;
       background-position: center center;
       background-size: cover;
 }
 
 .tarjeta-de-proyecto {
       width: inherit;
-      height: 250px;
+      height: 238px;
       padding: 15px;
       border-radius: 5px;
       display: flex;
@@ -62,7 +64,6 @@ a {
       display: grid;
       gap: 15px;
       padding: 15px;
-      border-bottom: 1px solid;
       align-items: center;
 
 }

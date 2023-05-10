@@ -38,7 +38,7 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="formulario" (submit)="editarEducacion()">
-          <label for="exampleFormControlInput1"class="form-label">ID</label>
+          <label for="exampleFormControlInput1"class="form-label">Elegir educación</label>
           <select class="form-control" id="select-idEdu" (change)="mostrarDatos()" formControlName="id" aria-label="Default select example" >
             <option *ngFor="let educacion of educacionList" [value]="educacion.id">{{educacion.titulo}}</option>
           </select>

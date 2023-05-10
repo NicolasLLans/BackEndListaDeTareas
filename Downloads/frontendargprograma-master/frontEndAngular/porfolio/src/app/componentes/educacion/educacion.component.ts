@@ -30,6 +30,7 @@ export class EducacionComponent implements OnInit{
       fechaFin: ['', Validators.required],
       descripcion: ['', Validators.required],
     });
+
     this.dataService.misEducaciones$.subscribe(data => {
       this.educacionList = data;
     });
